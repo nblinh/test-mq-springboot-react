@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  ibmmq:
+    container_name: ibmmq
+    image: ibmcom/mq
+    ports:
+      - "1414:1414"
+      - "9443:9443"
+    environment:
+      - LICENSE=accept
+      - MQ_QMGR_NAME=QM1
+    networks:
+      - spring-cloud-network
+  mq-spring:
+    container_name: mq-spring
+    build:
+      context: mq-spring
+      dockerfile: Dockerfile
+    image: mq-spring:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ibmmq
+    networks:
+      - spring-cloud-network
+networks:
+  spring-cloud-network:
+    driver: bridge
