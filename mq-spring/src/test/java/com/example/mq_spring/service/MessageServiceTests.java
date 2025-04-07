@@ -13,6 +13,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
 import static org.mockito.Mockito.*;
 
 import java.util.List;
@@ -38,14 +42,15 @@ public class MessageServiceTests {
     @Test
     public void findAllTest(){
         //given
-        Mockito.when(messageRepository.findAll()).thenReturn(List.of(message));
+        Pageable pageable = PageRequest.of(0, 2);
+        Mockito.when(messageRepository.findAll(pageable)).thenReturn(new PageImpl<>(List.of(message)));
 
         //when
-        var result = messageService.findAll();
+        var result = messageService.findAll(pageable);
 
         //then
-        verify(messageRepository).findAll();
-        Assertions.assertEquals(result, List.of(messageDto));
+        verify(messageRepository).findAll(pageable);
+        Assertions.assertEquals(result.toList(), List.of(messageDto));
     }
 
     @Test

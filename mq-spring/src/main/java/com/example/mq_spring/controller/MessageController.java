@@ -5,10 +5,11 @@ import com.example.mq_spring.service.MessageService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
-@RestController
+@RestController("")
 public class MessageController {
     private final MessageService messageService;
 
@@ -17,8 +18,8 @@ public class MessageController {
     }
 
     @GetMapping("/messages")
-    public List<MessageDto> findAllMessages() {
-        return messageService.findAll();
+    public Page<MessageDto> findAllMessages(Pageable pageable) {
+        return messageService.findAll(pageable);
     }
 
     @GetMapping("/messages/{messageId}")
