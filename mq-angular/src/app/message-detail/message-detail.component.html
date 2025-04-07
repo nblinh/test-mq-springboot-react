@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Message detail</h2>
+<mat-dialog-content *ngIf="message">
+  <div><span>id: </span>{{message.id}}</div>
+  <div><span>type: </span>{{message.type}}</div>
+  <div><span>content: </span>{{message.content}}</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+
