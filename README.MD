@@ -15,11 +15,5 @@ Username: `sa`
 
 Password: 
 
-### Application
-To execute application frond-end go to folder mq-angular
-execute: `npm install`
-then: `ng serve` to launche application
+### Application angular
 To connect to application `http://localhost:4200`
-
-### In construction ...
-I will dockerize the frond-end to day when i have time

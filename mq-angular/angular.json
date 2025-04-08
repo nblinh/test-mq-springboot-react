@@ -60,6 +60,9 @@
           "configurations": {
             "development": {
               "buildTarget": "mq-angular:build:development"
+            },
+            "production": {
+              "buildTarget": "mq-angular:build:production"
             }
           },
           "defaultConfiguration": "development"

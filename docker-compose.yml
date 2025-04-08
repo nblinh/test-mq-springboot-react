@@ -23,6 +23,16 @@ services:
       - ibmmq
     networks:
       - spring-cloud-network
+  mq-angular:
+    image: mq-angular
+    container_name: mq-angular
+    build:
+      context: mq-angular
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - mq-spring
 networks:
   spring-cloud-network:
     driver: bridge
