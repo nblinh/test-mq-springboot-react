@@ -29,9 +29,11 @@ export class PartnerComponent {
   }
 
   deletePartner(id: number) {
-    this.partnerService.deletePartner(id).subscribe(res => {
-      this.partners = this.partners.filter(item => item.id !== id);
-      console.log('Partner deleted successfully!');
-    })
+    if (confirm("Are you sure to delete partner id: " + id)) {
+      this.partnerService.deletePartner(id).subscribe(res => {
+        this.partners = this.partners.filter(item => item.id !== id);
+        console.log('Partner deleted successfully!');
+      })
+    }
   }
 }
