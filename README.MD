@@ -17,3 +17,6 @@ Password:
 
 ### Application angular
 To connect to application `http://localhost:4200`
+
+### MQ message
+To send mq message using api: `http://localhost:8080/api/v1/swagger-ui/index.html#/mq-message-controller/send`
