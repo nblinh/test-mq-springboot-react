@@ -20,7 +20,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onSelect(row)"></tr>
 </table>
 <mat-paginator
-        [length] = "totalPages"
+        [length] = "totalElements"
         [pageIndex]="page"
         [pageSize]="size"
         (page)="getMessage($event.pageIndex, $event.pageSize)">

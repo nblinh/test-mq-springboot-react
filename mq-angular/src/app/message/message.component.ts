@@ -15,7 +15,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   styleUrl: './message.component.css'
 })
 export class MessageComponent {
-  page: number = 1;
+  page: number = 0;
   size = 2;
   totalElements!: number;
   totalPages!: number;
@@ -31,10 +31,10 @@ export class MessageComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngAfterViewInit() {
-    this.messages.paginator = this.paginator;
-  }
-
+  /*  ngAfterViewInit() {
+     this.messages.paginator = this.paginator;
+   }
+  */
   ngOnInit(): void {
     this.getMessage(this.page, this.size);
   }
@@ -46,7 +46,7 @@ export class MessageComponent {
         this.size = res.size;
         this.page = res.number;
         this.totalPages = res.totalPages;
-        this.totalElements = this.totalElements;
+        this.totalElements = res.totalElements;
       })
   }
 
