@@ -18,5 +18,7 @@ Password:
 ### Application angular
 To connect to application `http://localhost:4200`
 
+Template css of application come from `https://v17.angular.io/tutorial/tour-of-heroes`
+
 ### MQ message
 To send mq message using api: `http://localhost:8080/api/v1/swagger-ui/index.html#/mq-message-controller/send`
