@@ -26,7 +26,8 @@ export class MessageComponent {
 
   selectedMessage?: Message;
 
-  constructor(private dialog: MatDialog, private messageService: MessageService) { }
+  constructor(private dialog: MatDialog, private messageService: MessageService) {
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

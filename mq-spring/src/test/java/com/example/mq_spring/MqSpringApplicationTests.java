@@ -14,8 +14,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
@@ -52,15 +54,9 @@ class MqSpringApplicationTests {
 
 
         // Action and Verify
-        var result = mockMvc.perform(get("/messages"))
+        mockMvc.perform(get("/messages"))
                 .andExpect(status().isOk())
-                .andDo(print()).andReturn();
-        String json = result.getResponse().getContentAsString();
-        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, MessageDto.class);
-        List<MessageDto> messageDtos = objectMapper.readValue(json, collectionType);
-
-        //then
-        Assertions.assertTrue(messageDtos.size() > 0);
+                .andDo(print()).andExpect(jsonPath("$.content",hasSize(3)));;
     }
 
 }

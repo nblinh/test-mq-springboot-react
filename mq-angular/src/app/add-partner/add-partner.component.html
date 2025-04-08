@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Add new Partner</h1><p> <a href="/partners" routerLink="/partners" class="btn btn-primary">Back</a></p>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+          <label for="alias">Alias:</label>
+          <input formControlName="alias" id="alias" type="text" class="form-control">
+          <div *ngIf="f['alias'].touched && f['alias'].invalid" class="alert alert-danger">
+              <div *ngIf="f['alias'].errors && f['alias'].errors['required']">Alias is required.</div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input formControlName="type" id="type" type="text" class="form-control">
+        <div *ngIf="f['type'].touched && f['type'].invalid" class="alert alert-danger">
+            <div *ngIf="f['type'].errors && f['type'].errors['required']">Type is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="direction">Direction:</label>
+        <select id="direction" formControlName="direction">
+          <option *ngFor="let direction of directionOptions" [value]="direction">{{ direction }}</option>
+      </select>
+      </div>
+      <div class="form-group">
+        <label for="application">Application:</label>
+        <input formControlName="application" id="application" type="text" class="form-control">
+        <div *ngIf="f['application'].touched && f['application'].invalid" class="alert alert-danger">
+            <div *ngIf="f['application'].errors && f['application'].errors['required']">Application is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="processedFlowType">Processed Flow Type:</label>
+        <select id="processedFlowType" formControlName="processedFlowType">
+          <option *ngFor="let processedFlowType of processedFlowTypeOptions" [value]="processedFlowType">{{ processedFlowType }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+          <label for="description">Description</label>
+          <textarea formControlName="description" id="description" type="text" class="form-control"></textarea>
+          <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+              <div *ngIf="f['description'].errors && f['description'].errors['required']">Description is required.</div>
+          </div>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+
+  </form>
+
+</div>
